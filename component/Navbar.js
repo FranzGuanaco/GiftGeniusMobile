@@ -4,12 +4,15 @@ import account_icon from './account_icon.png'
 import category_icon from './category_icon.png'
 import favorite_icon from './favorite_icon.png'
 import GiftGeniusLogo from './GiftGeniusLogo.png'
+import searchIcon from './search_icon.png'
+
+
 
 function Navbar(props) {
   return (
     <View style={styles.navbar}>
-      <View style={styles.logo}>
-        
+      <View style={styles.logoposition}>
+      <Image source={props.GiftGeniusLogo} alt="Accueil" style={styles.logo} />
       </View>
       <View style={styles.navbarCenter}>
         <View style={styles.position}>
@@ -18,10 +21,10 @@ function Navbar(props) {
       </View>
       <View style={styles.left}>
         <View style={styles.navbarList}>
-        <Image source={props.accountIcon} alt="Accueil" style={styles.icon} />
-        <View style={{paddingRight: 30}}></View>
-        <Image source={props.favoriteIcon} alt="Quiz" style={styles.icon} />
-        <View style={{paddingRight: 30}}></View>
+        <Image source={props.searchIcon} alt="Accueil" style={styles.icon} />
+        <View style={{paddingRight: 50}}></View>
+        <Image source={props.accountIcon} alt="Quiz" style={styles.icon} />
+        <View style={{paddingRight: 50}}></View>
         <Image source={props.categoryIcon} alt="Résultat" style={styles.icon} />
         </View>
       </View>
@@ -38,8 +41,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'black',
   },
-  logo: {
-    paddingLeft: '10%',
+  logoposition: {
+    paddingLeft: '5%',
+    paddingTop: '12%'
   },
   logoImage: {
     width: 130,
@@ -57,10 +61,15 @@ const styles = StyleSheet.create({
   navbarList: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingTop: '20%'
   },
   icon: {
     width: 25,
     height: 25
+  },
+  logo: {
+    width: 80,
+    height: 80
   },
 });
 
@@ -68,6 +77,9 @@ Navbar.defaultProps = {
   accountIcon: account_icon,
   favoriteIcon: favorite_icon,
   categoryIcon: category_icon,
+  GiftGeniusLogo: GiftGeniusLogo,
+  searchIcon: searchIcon,
+
 };
 
 export default Navbar;

@@ -5,7 +5,7 @@ const SellerButton = ({ imageUrl, onPress, children }) => {
   return (
     <TouchableOpacity style={styles.customButton} onPress={onPress}>
       {imageUrl && <Image source={{ uri: imageUrl }} style={styles.buttonImage} />}
-      <Text>{children}</Text>
+     
     </TouchableOpacity>
   );
 }
@@ -21,17 +21,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 60,
     height: 35,
-    shadowColor: 'rgba(0, 0, 0, 0.3)',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
     shadowRadius: 10,
-    shadowOpacity: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    elevation: 5,
   },
+  
   buttonImage: {
     marginRight: 10,
     maxWidth: 70,

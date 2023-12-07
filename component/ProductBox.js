@@ -1,27 +1,32 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import SellerButton from './SellerButton'; // Assurez-vous d'importer le composant SellerButton
+import SellerButton from './SellerButton'; 
 
-const ProductBox = ({ imageUrl, productName, shortDescription }) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.square}>
-        <Image source={{ uri: imageUrl }} alt="Votre image" style={styles.squareImage} />
-      </View>
-      <View style={styles.DescriptionStyle}>
-        <Text>{productName} {shortDescription}</Text>
-      </View>
-      <View style={styles.SellerStyle}>
-        <SellerButton style={styles.sellerButton} />
-      </View>
+const ProductBox = ({ 
+  imageUrl, 
+  productName = 'Nom du Produit', // Valeur par défaut pour productName
+  shortDescription = 'Description Courte' // Valeur par défaut pour shortDescription
+}) => {
+return (
+  <View style={styles.container}>
+    <View style={styles.square}>
+      <Image source={{ uri: imageUrl }} style={styles.squareImage} />
     </View>
-  );
+    <View style={styles.descriptionStyle}>
+      <Text style={styles.productName}>{productName}</Text>
+      <Text style={styles.shortDescription}>{shortDescription}</Text>
+    </View>
+    <View style={styles.MarginButton}>
+      <SellerButton/>
+    </View>
+  </View>
+);
 }
 
 const styles = StyleSheet.create({
     square: {
-      width: 180,
-      height: 180,
+      width: 170,
+      height: 170,
       backgroundColor: '#EFF3F4',
       display: 'flex',
       alignItems: 'center',
@@ -36,6 +41,26 @@ const styles = StyleSheet.create({
       marginTop: '1%',
       fontSize: 14,
     },
+    MarginButton: {
+        marginTop: '3%',
+      },
+    descriptionStyle: {
+        marginTop: '1%',
+      },
+    productName: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#000', // Vous pouvez personnaliser la couleur et d'autres styles
+      },
+    shortDescription: {
+        fontSize: 14,
+        color: '#666', // Couleur et taille pour la description
+      },
+
+     container: {
+        // Autres styles
+        marginLeft: '5%', // Ajoutez une marge à droite
+      },
   });
   
 

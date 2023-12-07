@@ -6,32 +6,13 @@ import Navbar from './component/Navbar';
 import NewsBox from './component/NewsBox';
 import SellerButton from './component/SellerButton';
 import ProductBox from './component/ProductBox';
+import { SwiperFlatList } from 'react-native-swiper';
+import Homepage from './interface/Homepage';
 
 export default function App() {
   console.log('hello')
   return (
-    <SafeAreaView style={styles.wrapper}>
-    
-        <Navbar/>
-        <NewsBox/>
-        <Category/>
-        <ProductBox/>
-    </SafeAreaView>
+    <Homepage/>
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-  },
-  upperHalf: {
-    flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  lowerHalf: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
-});
