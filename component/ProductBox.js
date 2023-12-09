@@ -5,19 +5,26 @@ import SellerButton from './SellerButton';
 const ProductBox = ({ 
   imageUrl, 
   onclick,
+  display = false,
   productName = 'Nom du Produit', // Valeur par défaut pour productName
-  shortDescription = 'Description Courte' // Valeur par défaut pour shortDescription
+  shortDescription = 'Description Courte', // Valeur par défaut pour shortDescription
+  width = 170, // Valeur par défaut pour la largeur
+  height = 170,
+  marginLeft='5%', 
+  marginTop= "3%" // Valeur par défaut pour la hauteur
 }) => {
 return (
-  <View style={styles.container}>
-    <View style={styles.square}>
+  <View style={[{marginLeft, width, height}]}>
+      <View style={[styles.square, {width, height}]}>
       <Image source={{ uri: imageUrl }} style={styles.squareImage} onClick={onclick}/>
     </View>
+    {display && (
     <View style={styles.descriptionStyle}>
       <Text style={styles.productName}>{productName}</Text>
       <Text style={styles.shortDescription}>{shortDescription}</Text>
     </View>
-    <View style={styles.MarginButton}>
+    )}
+    <View style={[{marginTop}]}>
       <SellerButton/>
     </View>
   </View>
@@ -26,9 +33,7 @@ return (
 
 const styles = StyleSheet.create({
     square: {
-      width: 170,
-      height: 170,
-      backgroundColor: '#EFF3F4',
+      backgroundColor: 'red',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -42,9 +47,6 @@ const styles = StyleSheet.create({
       marginTop: '1%',
       fontSize: 14,
     },
-    MarginButton: {
-        marginTop: '3%',
-      },
     descriptionStyle: {
         marginTop: '1%',
       },

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import Navbar from '../component/Navbar';
 import Category from '../component/Category';
 import ProductBox from '../component/ProductBox';
 import QuizButton from '../component/Quizbutton';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import NewsBox from '../component/NewsBox';
 import { useNavigation } from '@react-navigation/native';
+import ProductInfo from '../component/ProductInfo';
+import Suggestion from '../component/Suggestion';
 
 
 const ProductDetail = () => {
@@ -14,15 +16,23 @@ const ProductDetail = () => {
     
   return (
     <SafeAreaView style={styles.wrapper}>
+      <ScrollView style={styles.scrollView}>
         <Navbar/>
         <NewsBox/>
         <View style={{marginTop:'15%'}}></View>
-        <Category/>
-        <View style={{marginTop:'8%', marginRight: '44%'}}></View>
-        <ProductBox />
-        <View style={styles.quizButtonContainer}>
-        <QuizButton></QuizButton>
+       
+        <View style={{alignItems: 'center'}}>
+        <ProductBox display={true} width={250} height={250} marginLeft='0' marginTop= '8%'/>
+        
+        <View style={{marginTop:'28%'}}>
+      <ProductInfo/>
         </View>
+        </View>
+        <View style={{marginTop:'10%'}}>
+        <Suggestion/>
+        </View>
+        </ScrollView>
+        
     </SafeAreaView>
   );
 }
@@ -30,17 +40,7 @@ const ProductDetail = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-  },
-  quizButtonContainer: {
-    position: 'relative', // Position relative pour le conteneur
-    bottom: '-22%', // Déplace le QuizButton de 50% de sa largeur vers la gauche
-    alignItems: 'center', // Alignement à la fin du conteneur parent
-  },
-  upperHalf: {
-    flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "white"
   },
   lowerHalf: {
     flex: 1,

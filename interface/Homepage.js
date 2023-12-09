@@ -27,7 +27,7 @@ const Homepage = () => {
         <Category/>
         <View style={{marginTop:'8%', marginRight: '44%'}}></View>
         <TouchableOpacity onPress={goToProductDetail}>
-        <ProductBox />
+        <ProductBox display = {true}/>
         </TouchableOpacity>
         <View style={styles.quizButtonContainer}>
         <QuizButton></QuizButton>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   quizButtonContainer: {
     position: 'relative', // Position relative pour le conteneur
-    bottom: '-22%', // Déplace le QuizButton de 50% de sa largeur vers la gauche
+    bottom: '-32%', // Déplace le QuizButton de 50% de sa largeur vers la gauche
     alignItems: 'center', // Alignement à la fin du conteneur parent
   },
   upperHalf: {
