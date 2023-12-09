@@ -4,13 +4,14 @@ import SellerButton from './SellerButton';
 
 const ProductBox = ({ 
   imageUrl, 
+  onclick,
   productName = 'Nom du Produit', // Valeur par défaut pour productName
   shortDescription = 'Description Courte' // Valeur par défaut pour shortDescription
 }) => {
 return (
   <View style={styles.container}>
     <View style={styles.square}>
-      <Image source={{ uri: imageUrl }} style={styles.squareImage} />
+      <Image source={{ uri: imageUrl }} style={styles.squareImage} onClick={onclick}/>
     </View>
     <View style={styles.descriptionStyle}>
       <Text style={styles.productName}>{productName}</Text>

@@ -1,39 +1,29 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Navbar from '../component/Navbar';
 import Category from '../component/Category';
 import ProductBox from '../component/ProductBox';
 import QuizButton from '../component/Quizbutton';
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import NewsBox from '../component/NewsBox';
 import { useNavigation } from '@react-navigation/native';
 
 
-const Homepage = () => {
+const ProductDetail = () => {
 
-    console.log('Homepage launched')
-    const navigation = useNavigation();
-
-  const goToProductDetail = () => {
-    navigation.navigate('ProductDetail'); // Assurez-vous que 'ProductDetail' est un écran valide dans votre navigateur
-  };
-  return (
-    <>
     
+  return (
     <SafeAreaView style={styles.wrapper}>
-    <Navbar/>
+        <Navbar/>
         <NewsBox/>
         <View style={{marginTop:'15%'}}></View>
         <Category/>
         <View style={{marginTop:'8%', marginRight: '44%'}}></View>
-        <TouchableOpacity onPress={goToProductDetail}>
         <ProductBox />
-        </TouchableOpacity>
         <View style={styles.quizButtonContainer}>
         <QuizButton></QuizButton>
         </View>
     </SafeAreaView>
-    </>
   );
 }
 
@@ -59,4 +49,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Homepage;
+export default ProductDetail;
