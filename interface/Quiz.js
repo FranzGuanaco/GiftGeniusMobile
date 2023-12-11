@@ -4,13 +4,16 @@ import Category from '../component/Category';
 import ProductBox from '../component/ProductBox';
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import NewsBox from '../component/NewsBox';
+import { Dimensions } from 'react-native';
 import ProductInfo from '../component/ProductInfo';
 import Suggestion from '../component/Suggestion';
 import QuestionBox from '../component/QuestionBox';
 import ProgressBar from '../component/Progessbar';
 
 
-const Quiz = () => {
+const Quiz = ({question = "Question par défaut"}) => {
+
+  const windowWidth = Dimensions.get('window').width;
 
     
   return (
@@ -18,17 +21,18 @@ const Quiz = () => {
       
         <Navbar/>
         <NewsBox/>
-
+      
+        <View style={styles.progressBarContainer}>
+        <ProgressBar barWidth={windowWidth} />
+        </View>
         <View style={styles.textBoxContainer}>
-        <Text style={styles.questionText}>test</Text>
+        <Text style={styles.questionText}>{question}</Text>
         </View>
 
         <View style={styles.questionBoxContainer}>
         <View style={styles.questionBox}>
-          <QuestionBox />
-        </View>
-        <View style={styles.progressBarContainer}>
-          
+          <QuestionBox containerWidth={windowWidth}/>
+          <QuestionBox containerWidth={windowWidth}/>
         </View>
       </View>
         
@@ -41,17 +45,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white"
   },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
   navbar: {
     position: 'absolute',
     top: 0,
     zIndex: 2,
   },
   textBoxContainer: {
-    marginTop: '30%',
+    marginTop: '10%',
     alignItems: 'center'
   },
   questionText: {
@@ -61,20 +61,18 @@ const styles = StyleSheet.create({
     flex: 4,
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: '25%',
-    marginTop: '10%'
+    justifyContent: 'center', // Centre le contenu horizontalement
+    marginTop: '5%',
   },
   questionBox: {
-    border: '2px solid red', // Note: React Native uses different styles, not CSS
+
+    width: '90%', // Définit la largeur à 80% du conteneur
+    height: '90%',
     padding: 10,
-    width: '40%',
-    height: '80%',
   },
   progressBarContainer: {
-    position: 'absolute',
-    top: '100%',
-    left: '30%',
-    zIndex: 1,
+marginTop: '12%',
+alignItems: 'center'
   },
 });
 

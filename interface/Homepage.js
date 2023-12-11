@@ -3,13 +3,19 @@ import Navbar from '../component/Navbar';
 import Category from '../component/Category';
 import ProductBox from '../component/ProductBox';
 import QuizButton from '../component/Quizbutton';
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import NewsBox from '../component/NewsBox';
 import { useNavigation } from '@react-navigation/native';
 
 
 const Homepage = () => {
+
+  const screenHeight = Dimensions.get('window').height;
+
+  // Calculez 70% de la hauteur de l'écran
+  const buttonHeight = screenHeight * 0.48;
 
     console.log('Homepage launched')
     const navigation = useNavigation();
@@ -23,14 +29,24 @@ const Homepage = () => {
     <SafeAreaView style={styles.wrapper}>
     <Navbar/>
         <NewsBox/>
+
+        <ScrollView style={styles.scrollView}>
+
         <View style={{marginTop:'15%'}}></View>
         <Category/>
         <View style={{marginTop:'8%', marginRight: '44%'}}></View>
+       
         <TouchableOpacity onPress={goToProductDetail}>
         <ProductBox display = {true}/>
         </TouchableOpacity>
+        <View style={{marginTop:'22%'}}></View>
+        <View style={{marginTop:'8%', marginRight: '44%'}}></View>
+
+   
+        </ScrollView>
+
         <View style={styles.quizButtonContainer}>
-        <QuizButton></QuizButton>
+            <QuizButton height={buttonHeight}/>
         </View>
     </SafeAreaView>
     </>
@@ -42,19 +58,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   quizButtonContainer: {
-    position: 'relative', // Position relative pour le conteneur
+    position: 'absolute', // Position relative pour le conteneur
     bottom: '-38%', // Déplace le QuizButton de 50% de sa largeur vers la gauche
-    alignItems: 'center', // Alignement à la fin du conteneur parent
-  },
-  upperHalf: {
-    flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  lowerHalf: {
-    flex: 1,
-    backgroundColor: 'white',
+    alignSelf: 'center', // Alignement à la fin du conteneur parent
   },
 });
 

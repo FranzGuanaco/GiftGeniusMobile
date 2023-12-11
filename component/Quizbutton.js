@@ -3,7 +3,7 @@ import quizIcon from './quiz-icon.png';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const QuizButton = () => {
+const QuizButton = ({ height = 300 }) => {
   const navigation = useNavigation();
 
   const goToQuiz = () => {
@@ -12,7 +12,7 @@ const QuizButton = () => {
   };
 
   return (
-    <View style={styles.circleSlice}>
+    <View style={[styles.circleSlice, { height: height }]}>
       <TouchableOpacity style={styles.imageContainer} onPress={goToQuiz}>
         <Image source={quizIcon} style={styles.image} />
       </TouchableOpacity>
@@ -23,7 +23,7 @@ const QuizButton = () => {
 const styles = StyleSheet.create({
   circleSlice: {
     width: 300, // Largeur du cercle
-    height: 700, // Hauteur à la moitié de la largeur pour obtenir un demi-cercle
+    height: 250, // Hauteur à la moitié de la largeur pour obtenir un demi-cercle
     backgroundColor: '#ECC25A',
     borderRadius: 300, // La moitié de la largeur pour obtenir un demi-cercle
     overflow: 'hidden',

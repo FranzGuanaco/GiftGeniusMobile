@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
-const QuestionBox = ({ imageUrl, onClick }) => {
+const QuestionBox = ({ imageUrl, onClick, containerWidth }) => {
+
+  const boxWidth = containerWidth * 0.4; // 20% de la largeur du conteneur
+  
   return (
-    <TouchableOpacity onPress={onClick} style={styles.questionBox}>
+    <TouchableOpacity onPress={onClick} style={[styles.questionBox, { width: boxWidth }]}>
       <Image source={{ uri: imageUrl }} style={styles.questionBoxImage} />
     </TouchableOpacity>
   );
@@ -11,9 +14,8 @@ const QuestionBox = ({ imageUrl, onClick }) => {
 
 const styles = StyleSheet.create({
   questionBox: {
-    width: 30,
-    height: 20,
-    backgroundColor: 'red',
+    height: 140,
+    backgroundColor: '#D9D9D9',
     alignItems: 'center',
     justifyContent: 'center',
   },

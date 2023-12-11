@@ -1,50 +1,32 @@
-import React, { useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Animated, { Easing, withSpring, withTiming, useSharedValue, useAnimatedStyle, useAnimatedEffect } from 'react-native-reanimated';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 
-const ProgressBar = ({ trigger }) => {
-  const progress = useSharedValue(0);
 
-  useEffect(() => {
-    if (trigger) {
-      progress.value = withTiming(1, { duration: 1000, easing: Easing.ease });
-    }
-  }, [trigger]);
-
-  const progressBarStyle = useAnimatedStyle(() => {
-    return {
-      width: `${progress.value * 100}%`,
-    };
-  });
+const ProgressBar = ({ progress, barWidth }) => {
+  // Assurez-vous que progress est un nombre entre 0 (pour 0%) et 1 (pour 100%)
+  const fillingWidth = progress * 100 + '%'; // Convertit la progression en pourcentage de la largeur totale
+  const progressbarWidth = barWidth * 0.7;
 
   return (
-    <View style={styles.progressBarContainer}>
-      <Animated.View style={[styles.progressBar, progressBarStyle]}>
-        <Text style={styles.progressBarText}>Uploaded Successfully!</Text>
-      </Animated.View>
+    <View style={[styles.progressBackground, { width: progressbarWidth }]}>
+      <View style={[styles.progressFilling, { width: fillingWidth }]} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  progressBarContainer: {
-    width: 200,
-    height: 30,
-    borderRadius: 15,
-    position: 'relative',
+  progressBackground: {
+    height: 20,
+    backgroundColor: '#000', // La couleur de fond de votre choix
+    borderRadius: 10,
     overflow: 'hidden',
-    backgroundColor: '#e76f51',
+    borderColor: '#000', // Couleur de la bordure de la barre de progression
+    borderWidth: 0,
   },
-  progressBar: {
+  progressFilling: {
     height: '100%',
-    width: 0,
-    backgroundColor: '#4895ef',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  progressBarText: {
-    color: 'white',
-    fontFamily: 'sans-serif',
+    backgroundColor: 'gold', // Vous pouvez utiliser LinearGradient pour un effet dégradé
+    borderRadius: 10,
   },
 });
 

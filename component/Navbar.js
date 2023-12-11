@@ -52,6 +52,7 @@ function Navbar(props) {
         <Image source={props.categoryIcon} alt="category" style={styles.icon} />
         </TouchableOpacity>
         </View>
+
   
         {/* Sidebar */}
       <View style={[styles.sidebar, isNavOpen ? styles.sidebarOpen : null]}>
