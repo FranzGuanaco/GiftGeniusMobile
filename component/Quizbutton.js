@@ -1,10 +1,14 @@
 import React from 'react';
 import quizIcon from './quiz-icon.png';
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const QuizButton = ({ navigation }) => {
+const QuizButton = () => {
+  const navigation = useNavigation();
+
   const goToQuiz = () => {
     navigation.navigate('Quiz');
+    console.log('test');
   };
 
   return (
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     position: 'absolute', // Positionnement absolu
-    top: 20, // Place en haut du conteneur
+    top: 10, // Place en haut du conteneur
     width: 60,
     height: 60,
     alignItems: 'center',

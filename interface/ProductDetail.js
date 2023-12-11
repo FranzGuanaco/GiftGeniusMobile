@@ -16,9 +16,10 @@ const ProductDetail = () => {
     
   return (
     <SafeAreaView style={styles.wrapper}>
-      <ScrollView style={styles.scrollView}>
+      
         <Navbar/>
         <NewsBox/>
+        <ScrollView style={styles.scrollView}>
         <View style={{marginTop:'15%'}}></View>
        
         <View style={{alignItems: 'center'}}>

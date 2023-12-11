@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Homepage from './interface/Homepage';
 import ProductDetail from './interface/ProductDetail';
+import Quiz from './interface/Quiz';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,11 @@ export default function App() {
         <Stack.Screen 
         name="ProductDetail" 
         component={ProductDetail} 
+        options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+        name="Quiz" 
+        component={Quiz} 
         options={{ headerShown: false }} 
         />
       </Stack.Navigator>

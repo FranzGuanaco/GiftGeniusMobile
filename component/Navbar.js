@@ -69,7 +69,7 @@ function Navbar(props) {
 const styles = StyleSheet.create({
   navbar: {
     flexDirection: 'row',
-    height: 100,
+    height: 80,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
   },
   logoposition: {
     paddingLeft: '5%',
-    paddingTop: '12%'
+    paddingTop: '10%'
   },
   logoImage: {
-    width: 130,
+    width: 110,
   },
   navbarCenter: {
     flex: 1,
@@ -96,15 +96,15 @@ const styles = StyleSheet.create({
   navbarList: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: '20%'
+    paddingTop: '10%'
   },
   icon: {
     width: 25,
     height: 25
   },
   logo: {
-    width: 80,
-    height: 80
+    width: 70,
+    height: 70
   },
   sidebar: {
     position: 'absolute',

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
   },
   suggestion: {
-    marginTop: '3%',
+    marginTop: '7%',
     marginLeft: '2%',
   },
 });
