@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import Input from '../src/component/Input';
-import SellerButton from '../src/component/SellerButton';
+import Input from '../component/Input';
+import SellerButton from '../component/SellerButton';
 import emailjs from '@emailjs/browser';
 import { useNavigation } from '@react-navigation/native';
-import { useAuth } from '../src/interface/AuthContext';
+import { useAuth } from './AuthContext'; // Assurez-vous que ce contexte est adapté pour React Native
 
 export const generateRandomNumber = () => Math.floor(100000 + Math.random() * 900000);
 

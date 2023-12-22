@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import { createUserWithEmailAndPassword } from "@react-native-firebase/auth";
 import { collection, addDoc, doc, setDoc } from "@react-native-firebase/firestore";
-import { auth, firestore } from '../Firebase';
+import { auth } from '../Firebase';
+import { firestore } from '../Firebase';
+import { app } from '../Firebase';
+import { useAuth } from './AuthContext'; // Assurez-vous que cette importation est correcte
 
-// Assurez-vous que cette importation est correcte
 
 function EmailVerification({ navigation }) {
 
-  console.log("auth initialisé :", auth);
+  console.log("Firebase initialisé :", app);
 
   const goToEmailVerification = () => {
     navigation.navigate('Home');
@@ -46,10 +48,8 @@ function EmailVerification({ navigation }) {
     const randomNumber = randomNum.toString(); // Générer un nombre pour la comparaison
 
     if (verificationCode === randomNumber) {
-      console.log("auth:", auth);
-
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth,email, password);
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
         const user = userCredential.user;
         console.log('User created:', user);
         await test(user.uid);

@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
-import Navbar from '../src/component/Navbar';
-import Category from '../src/component/Category';
-import ProductBox from '../src/component/ProductBox';
-import QuizButton from '../src/component/Quizbutton';
+import Navbar from '../component/Navbar';
+import Category from '../component/Category';
+import ProductBox from '../component/ProductBox';
+import QuizButton from '../component/Quizbutton';
 import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import NewsBox from '../src/component/NewsBox';
+import NewsBox from '../component/NewsBox';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -66,5 +66,3 @@ const styles = StyleSheet.create({
 
 
 export default Homepage;
-
-

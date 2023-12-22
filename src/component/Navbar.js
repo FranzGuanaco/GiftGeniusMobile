@@ -6,7 +6,7 @@ import favorite_icon from './favorite_icon.png'
 import GiftGeniusLogo from './GiftGeniusLogo.png'
 import searchIcon from './search_icon.png'
 import { useNavigation } from '@react-navigation/native';
-import NewsBox from '../src/component/NewsBox';
+import NewsBox from './NewsBox';
 
 
 

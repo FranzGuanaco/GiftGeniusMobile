@@ -3,13 +3,13 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Homepage from './src/interface/Homepage';
-import ProductDetail from './src/interface/ProductDetail';
-import Quiz from './src/interface/Quiz';
-import Login from './src/interface/Login';
-import CreateAccount from './src/interface/CreateAccount';
-import EmailVerification from './src/interface/Confirmation';
-import { AuthProvider } from './src/interface/AuthContext';
+import Homepage from './interface/Homepage';
+import ProductDetail from './interface/ProductDetail';
+import Quiz from './interface/Quiz';
+import Login from './interface/Login';
+import CreateAccount from './interface/CreateAccount';
+import EmailVerification from './interface/Confirmation';
+import { AuthProvider } from './interface/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
