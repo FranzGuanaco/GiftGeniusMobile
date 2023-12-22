@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
-    fontStyle: 'bold',
+
     color: 'white', // Mettez 'white' entre guillemets
    
   },

@@ -29,6 +29,11 @@ function Navbar(props) {
     console.log('test');
   };
 
+  const goToLogin = () => {
+    navigation.navigate('Login');
+    console.log('Login');
+  };
+
   return (
     <View style={styles.navbar}>
       <View style={styles.logoposition}>
@@ -45,8 +50,9 @@ function Navbar(props) {
         <Image source={props.searchIcon} alt="search" style={styles.icon} />
 
         <View style={{paddingRight: 50}}></View>
+        <TouchableOpacity onPress={goToLogin}>
         <Image source={props.accountIcon} alt="favorite" style={styles.icon} />
-
+        </TouchableOpacity>
         <View style={{paddingRight: 50}}></View>
         <TouchableOpacity onPress={openNav}>
         <Image source={props.categoryIcon} alt="category" style={styles.icon} />
