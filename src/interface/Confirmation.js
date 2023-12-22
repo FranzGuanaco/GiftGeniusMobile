@@ -10,7 +10,7 @@ import { useAuth } from './AuthContext'; // Assurez-vous que cette importation e
 
 function EmailVerification({ navigation }) {
 
-  console.log("Firebase initialisé :", app);
+  console.log("test auth:", auth);
 
   const goToEmailVerification = () => {
     navigation.navigate('Home');
@@ -43,28 +43,27 @@ function EmailVerification({ navigation }) {
   };
 
   const handleSubmit = async () => {
-    const Code = code.join('');
-    const verificationCode = Code.toString();
-    const randomNumber = randomNum.toString(); // Générer un nombre pour la comparaison
-
+    const Code = code.join(''); // Join the code array into a string
+    const verificationCode = Code.toString(); // Convert the string to a number
+    const randomNumber = randomNum.toString(); // Convert the random number to a number
+  
+    // Validate the verification code
     if (verificationCode === randomNumber) {
+      // Update email and password with user input from useAuth
+    
       try {
-        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password)
         const user = userCredential.user;
         console.log('User created:', user);
-        await test(user.uid);
-        goToEmailVerification();
+  
+        // ... Additional logic after user creation ...
       } catch (error) {
         console.error('erreur verfication code:', error);
       }
     } else {
-      console.log('Type de code:', typeof code);
-      console.log('Type de generateRandomNumber:', typeof randomNumber);
-      console.log('Code de vérification:', verificationCode);
-      console.log('Nombre aléatoire attendu:', randomNumber);
+      console.error('Verification code mismatch:', verificationCode, '!=', randomNumber);
     }
   };
-
   return (
     <View style={styles.background}>
       <View style={styles.container}>
