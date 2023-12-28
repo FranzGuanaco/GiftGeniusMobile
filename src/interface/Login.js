@@ -1,28 +1,42 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useAuth } from './AuthContext';
-import emailjs from '@emailjs/browser';
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup} from '@react-native-firebase/auth';
+import { auth } from '../Firebase';
 import { useNavigation } from '@react-navigation/native';
 
 
-function Login({ navigation }) {
+function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigation = useNavigation();
 
-    const GmailConnection = async () => {
+    const GmailConnection = () => {
         const provider = new GoogleAuthProvider();
-        try {
-            const result = await signInWithPopup(auth, provider);
-            // La suite de la logique...
-            navigation.navigate('Home'); // Utilisez la navigation React Native
-        } catch (error) {
-            // Gestion des erreurs...
-        }
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // Ceci vous donne un jeton d'accès Google. Vous pouvez l'utiliser pour accéder à l'API Google.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // Les informations de l'utilisateur connecté
+                const user = result.user;
+                // ...
+                navigation.navigate('Home'); // Redirigez l'utilisateur où vous voulez après la connexion
+            }).catch((error) => {
+                // Gérez les erreurs ici.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // Le courriel de l'utilisateur qui a été utilisé pour la tentative de connexion
+                const email = error.email;
+                // Le type AuthCredential qui a été utilisé
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
     };
 
     const Connection = async () => {
         try {
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await auth.signInWithEmailAndPassword(email, password);
             console.log('User connected:', userCredential.user);
             navigation.navigate('Home');
         } catch (error) {
